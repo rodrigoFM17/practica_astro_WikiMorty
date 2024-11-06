@@ -1,0 +1,197 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Teko:wght@300..700&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=MuseoModerno:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>WikiMorty |{title}</title>
+	</head>
+	<header>
+		<nav>
+			<ul>
+				<li class="logo">
+					<img src="../../public/logo.png" alt="">
+					<a href="/" class="title">WIKIMORTY</a>
+				</li>
+				<li>
+					<img src="../../public/portal.png" alt="">
+					<a href="/personajes">Personajes</a>
+				</li>
+				<li>
+					<img src="../../public/portal.png" alt="">
+					<a href="/localizaciones">localizaciones</a>
+				</li>
+				<li>
+					<img src="../../public/portal.png" alt="">
+					<a href="/episodios">Episodios</a>
+				</li>
+			</ul>
+		</nav>
+	</header>
+	<body>
+		<main>
+			<slot />
+		</main>
+	</body>
+</html>
+<style is:global>
+
+	:root {
+		--g-100: #CFF3B1;
+		--g-200: #CFF3B1;
+		--g-300: #B8EE89;
+		--g-400: #A0E862;
+		--g-500: #88E23B;
+		--g-600: #6DB52F;
+		--g-700: #528823;
+		--g-800: #365A18;
+		--g-900: #1B2D0C;
+
+		--b-100: #688AA8;
+		--b-200: #4F779A;
+		--b-300: #36638B;
+		--b-400: #1D507D;
+		--b-500: #043C6E;
+		--b-600: #033058;
+		--b-700: #022442;
+		--b-800: #02182C;
+		--b-900: #010C16;
+
+		--gray-100: #C7C7C7;
+		--gray-200: #8F8F8F;
+		--gray-300: #696969 ;
+		--gray-400: #575757 ;
+		--gray-500: #444444 ;
+		--gray-600: #363636 ;
+		--gray-700: #292929 ;
+		--gray-800: #1B1B1B ;
+		--gray-900: #0E0E0E ;
+
+		color:white
+	}
+
+	@media (max-width: 576px){
+		:root{
+			font-size: 12px;
+		}
+	}
+	@media (min-width: 576px) and (max-width: 768px){
+		:root{
+			font-size: 14px;
+		}
+	}
+	@media (min-width: 768px) and (max-width: 1199px){
+		:root{
+			font-size: 16px;
+		}
+	}
+	@media (min-width: 1200px) and (max-width: 1399px){
+		:root{
+			font-size: 18px;
+		}
+	}
+	@media (min-width: 1400px){
+		:root{
+			font-size: 20px;
+		}
+	}
+
+	body{
+		background-color: var(--gray-600);
+	}
+
+	header .title {
+			font-family: "Bungee Shade";
+			font-size: 2em;
+			letter-spacing: .2em;
+			color: var(--g-400);
+			text-shadow: 0px 0px 30px var(--b-200);
+	}
+	
+	header {
+		font-family: "MuseoModerno";
+		width: 100%;
+		height: 4em;
+		padding: 10px 0 10px 20px;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 0 60px rgb(203, 203, 203, 0.5);
+		position: fixed;
+		z-index: 10;
+		background-color: inherit;
+
+		& .logo{
+			display: flex;
+			align-items: center;
+			gap: 10px;
+
+			& img {
+				width: 3em;
+				opacity: 1;
+			}
+		}
+	}
+
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+	}
+	
+	header ul {
+		list-style: none;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 97vw;
+
+		& li {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+
+			& img {
+				opacity: 0;
+				width: 2em;
+			}
+
+			&:hover img, &:hover a {
+				opacity: 1;
+				transition:  all ease-in 300ms;
+			}
+
+			
+		}
+
+		& a {
+			font-family: inherit;
+			text-decoration: none;
+			color: white;
+			font-size: 1.5em;
+
+			&:hover{
+				color: var(--g-400);
+				text-shadow: 0 0 20px var(--g-400);
+			}
+		}
+	}
+</style>

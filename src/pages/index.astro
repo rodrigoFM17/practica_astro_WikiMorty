@@ -1,0 +1,105 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="Welcome to Astro">
+	<figure>
+		<img src="../../public/inicio.png" alt="">
+		<div>
+			<p>
+				¡Bienvenidos al portal interdimensional de Rick y Morty! Prepárate para 
+				una experiencia que desafiará los límites de la ciencia, la moralidad y,  
+				bueno, la cordura misma. 
+			</p>
+		</div>
+	</figure>
+	<img id="olas-inicio" src="../../public/olas.svg" alt="">
+	<figure class="secciones">
+		<img src="../../public/personajes.png" alt="">
+		<div>
+			<a href="/personajes">
+				Personajes
+			</a>
+		</div>
+	</figure>
+	<figure class="secciones">
+		<img src="../../public/localizaciones.png" alt="">
+		<div>
+			<a href="">
+				Localizaciones
+			</a>
+		</div>
+	</figure>
+	<figure class="secciones">
+		<img src="../../public/episodios.png" alt="">
+		<div>
+			<a href="">
+				Episodios
+			</a>
+		</div>
+	</figure>
+
+	<img id="olas-final" src="../../public/olas_final.svg" alt="olas al final">
+</Layout>
+
+<style>
+
+#olas-inicio {
+	width: 100%;
+	margin-bottom: 5em;
+}
+
+figure {
+	position: relative;
+	z-index: 2;
+
+	& img {
+		width: 100%;
+	}
+}
+
+figure div {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(5px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	font-family: "Teko";
+	z-index: 3;
+	transition: all ease 300ms;
+	box-shadow: 0 0 30px black inset;
+}
+
+figure div p {
+		font-size: 3em;
+		width: 40%;
+		font-weight: 500;
+		text-wrap: balance;
+		text-align: center;
+	}
+
+figure:hover div{
+	opacity: 1;
+	transition: all ease-in 500ms;
+}
+
+.secciones {
+	width: 90%;
+	margin: 5em auto;
+}
+
+.secciones a {
+	text-decoration: none;
+	font-size: 6em;
+	color: white;
+	font-family: "MuseoModerno";
+}
+
+
+</style>

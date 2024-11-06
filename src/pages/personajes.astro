@@ -1,0 +1,37 @@
+---
+import Layout from "../layouts/Layout.astro"
+import CardPersonaje from '../components/CardPersonaje.astro'
+import {getCharacters} from '../services/fetchProducts'
+const characters = await getCharacters()
+console.log(characters)
+---
+
+<Layout title="Personajes">
+    <ul>
+        {
+            characters.results.map(({name, status, species, gender, origin, location, image} : any) => 
+            <CardPersonaje 
+            name={name}
+            status={status}
+            species={species}
+            gender={gender}
+            origin={origin.name}
+            location={location.name}
+            image={image}
+            /> )
+        }
+    </ul>
+
+
+</Layout>
+
+<style>
+
+ul{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+    padding: 10%;
+    list-style: none;
+    gap: 3em;
+}
+</style>

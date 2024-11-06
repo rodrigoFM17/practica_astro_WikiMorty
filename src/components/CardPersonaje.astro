@@ -1,0 +1,122 @@
+---
+const {name, status, species, gender, origin, location, image} = Astro.props
+---
+
+<li class="character-card">
+	<div class="face front">
+		<img src={image} alt={name}>
+	</div>
+	<div class="face back">
+		<div>
+			<h2>{name}</h2>
+			{
+				status == "Alive" ?
+				<span class="alive">{status}</span>
+				: status == "Dead" ? <span class="dead">{status}</span>
+				: <span class="unknown">{status}</span>
+			}
+		</div>
+		<div>
+			<span>Genero:</span>
+			{
+				gender == "Male" ? <img src="../../public/male.svg" alt=""> : 
+				gender == "Female" ? <img src="../../public/female.svg" alt=""> :
+				<img src="../../public/unknown.svg" alt="">
+			}
+		</div>
+		<div>
+			<span>Especie: </span>
+			<span>{species}</span>
+		</div>
+		<div>
+			<span>Origen:</span>
+			<span>{origin}</span>
+		</div>
+		<div>
+			<span>Ultima localizacion: </span>
+			<span>{location}</span>
+		</div>
+	</div>
+</li>
+
+<style>
+
+.face {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	backface-visibility: hidden;
+}
+
+.back > div .alive, .back > div .dead, .unknown{
+	width: 4em;
+	padding: .2em;
+	border-radius: .5em;
+	text-align: center;
+}
+.back > div img {
+	width: 1em;
+}
+.alive{
+	color: var(--g-900);
+	background-color: var(--g-300);
+}
+.dead{
+	background-color: rgb(171, 0, 0);
+}
+.unknown {
+	background-color: white;
+	color: black;
+}
+
+.front img{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	object-fit: cover;
+}
+
+.back{
+	transform: rotateY(180deg);
+	background: linear-gradient(to bottom, #323232 0%, #3F3F3F 40%, #1C1C1C 150%), linear-gradient(to top, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.25) 200%);
+ 	background-blend-mode: multiply;
+	padding: 2em;
+	box-shadow: 0 0 20px var(--g-400);
+	font-family: "Teko";
+	font-size: 1.5rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+}
+.back > div{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1em;
+}
+.back > div span:first-child{
+	color: var(--g-500);
+}
+.back > div span:nth-child(2):not(.alive,.dead, .unknown){
+	text-align: right;
+}
+
+.back h2{
+	font-size: 2rem;
+}
+
+.character-card{
+	width: 100%;
+	height: 60vh;
+	transform-style: preserve-3d;
+	position: relative;
+	transition: all ease-in-out 300ms;
+	box-shadow: 0 0 20px #262626;
+}
+.character-card:hover{
+	transform: rotateY(180deg);
+}
+
+
+	
+</style>
